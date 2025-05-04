@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "psPoKjyYG9Qrd9WtfdBKugUf4HfhVK6P6XpryWBhpqk=",
+  "Source": "FilmSiteAPI",
+  "BasePath": "_content/FilmSiteAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
