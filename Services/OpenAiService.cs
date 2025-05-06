@@ -63,9 +63,9 @@ namespace NetRefreshTokenDemo.Api.Services
 
             string mediaTypeDescription = GetMediaTypeDescription(mediaType);
 
-            // Prepare the favorites list for the prompt
+           
             var favoritesList = new StringBuilder();
-            foreach (var favorite in favorites.Take(10)) // Limit to 10 favorites for better results
+            foreach (var favorite in favorites.Take(10)) 
             {
                 favoritesList.AppendLine($"- {favorite.Title} ({favorite.MediaType})");
             }

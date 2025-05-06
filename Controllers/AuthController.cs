@@ -221,7 +221,7 @@ public class AuthController : ControllerBase
             user.RefreshToken = string.Empty;
             await _context.SaveChangesAsync();
 
-            // Clear cookies
+           
             Response.Cookies.Delete("accessToken", new CookieOptions
             {
                 Path = "/",

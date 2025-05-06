@@ -18,7 +18,7 @@ namespace NetRefreshTokenDemo.Api.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IOpenAIService _openAIService;
-        private readonly IMediaLookupService _mediaLookupService; // New service for looking up media IDs
+        private readonly IMediaLookupService _mediaLookupService; 
 
         public RecommendationsController(
             AppDbContext context,
@@ -61,7 +61,7 @@ namespace NetRefreshTokenDemo.Api.Controllers
             
             var recommendations = await _openAIService.GetRecommendationsAsync(favorites, mediaType);
             
-            // Enhance recommendations with IDs
+            
             await EnhanceRecommendationsWithIds(recommendations, mediaType);
 
             return Ok(recommendations);
@@ -85,7 +85,7 @@ namespace NetRefreshTokenDemo.Api.Controllers
                 string.IsNullOrEmpty(request.MediaType) ? null : request.MediaType
             );
 
-            // Enhance recommendations with IDs
+           
             await EnhanceRecommendationsWithIds(recommendations, request.MediaType);
 
             return Ok(recommendations);

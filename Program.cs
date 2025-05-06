@@ -51,7 +51,7 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:secret"] ?? throw new InvalidOperationException("JWT secret is missing")))
     };
     
-    // Add this event handler to extract token from cookies
+    
     options.Events = new JwtBearerEvents
     {
         OnMessageReceived = context =>
@@ -67,7 +67,7 @@ builder.Services.AddAuthentication(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         policy
-            .AllowAnyOrigin() // For testing only - in production use specific origins
+            .AllowAnyOrigin() 
             .AllowAnyHeader()
             .AllowAnyMethod();
     });

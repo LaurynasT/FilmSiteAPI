@@ -29,7 +29,7 @@ namespace NetRefreshTokenDemo.Api.Services
             _configuration = configuration;
             _logger = logger;
 
-            // Get TMDB API key from configuration
+            
             _apiKey = _configuration["TMDB:ApiKey"];
             if (string.IsNullOrEmpty(_apiKey))
             {
@@ -47,13 +47,13 @@ namespace NetRefreshTokenDemo.Api.Services
 
             try
             {
-                // Determine if we're looking for movies or TV shows
+                
                 string searchType = mediaType?.ToLower() == "tv" ? "tv" : "movie";
 
-                // Construct the search URL
+                
                 string searchUrl = $"https://api.themoviedb.org/3/search/{searchType}?api_key={_apiKey}&query={Uri.EscapeDataString(title)}";
 
-                // Make the request
+                
                 var response = await _httpClient.GetAsync(searchUrl);
                 if (!response.IsSuccessStatusCode)
                 {
@@ -61,21 +61,21 @@ namespace NetRefreshTokenDemo.Api.Services
                     return null;
                 }
 
-                // Parse the response
+                
                 var content = await response.Content.ReadAsStringAsync();
                 var searchResult = JsonSerializer.Deserialize<TMDBSearchResponse>(content, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });
 
-                // Check if we found any results
+                
                 if (searchResult?.Results == null || searchResult.Results.Count == 0)
                 {
                     _logger.LogWarning($"No results found for '{title}'");
                     return null;
                 }
 
-                // Return the ID of the first (most relevant) match
+                
                 return searchResult.Results[0].Id.ToString();
             }
             catch (Exception ex)
@@ -97,8 +97,8 @@ namespace NetRefreshTokenDemo.Api.Services
         {
             public int Id { get; set; }
             public string Title { get; set; }
-            public string Name { get; set; } // For TV shows
-            // Other properties omitted for brevity
+            public string Name { get; set; } 
+            
         }
     }
 }
